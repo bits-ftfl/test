@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSO One — Theme Assets</title>
+
+  <style>
+    /* CSS Custom Properties for Light (Default) and Dark Themes */
+    :root {
+      --sso-navy: #092c58;
+      --sso-navy-dark: #061f3d;
+      --sso-coral: #f25d5a;
+      --sso-coral-dark: #dc4d4a;
+      
+      --sso-blue-soft: #eef5fb;
+      --surface: #ffffff;
+      --surface-hover: #fcfdff;
+      --background: #f5f8fc;
+      --border: #dce5ef;
+      --border-hover: #c7d7e7;
+      --text: #172b3f;
+      --muted: #66788a;
+      --shadow: 0 8px 24px rgba(9, 44, 88, 0.08);
+      
+      --logo-light-display: block;
+      --logo-dark-display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sso-blue-soft: #172b45;
+        --surface: #0e1a29;
+        --surface-hover: #132236;
+        --background: #070e17;
+        --border: #1e344d;
+        --border-hover: #2a4768;
+        --text: #e1e9f5;
+        --muted: #8b9eb3;
+        --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+        --logo-light-display: none;
+        --logo-dark-display: block;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(242, 93, 90, 0.08), transparent 28rem),
+        linear-gradient(180deg, var(--background) 0%, var(--background) 100%);
+    }
+
+    .topbar {
+      background: var(--sso-navy);
+      border-bottom: 4px solid var(--sso-coral);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .topbar-inner {
+      max-width: 980px;
+      min-height: 82px;
+      margin: 0 auto;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand svg {
+      width: auto;
+      max-width: 190px;
+      height: 38px;
+    }
+
+    /* Switch SVGs based on Light / Dark mode */
+    .brand .logo-light {
+      display: var(--logo-light-display);
+    }
+
+    .brand .logo-dark {
+      display: var(--logo-dark-display);
+    }
+
+    .badge {
+      color: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 28px 60px;
+    }
+
+    .intro {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--sso-coral);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .themes {
+      display: grid;
+      gap: 14px;
+    }
+
+    .theme {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .theme:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .theme.open {
+      border-color: rgba(242, 93, 90, 0.55);
+    }
+
+    .theme-header {
+      width: 100%;
+      min-height: 70px;
+      padding: 16px 20px;
+      border: 0;
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .theme-header:hover {
+      background: var(--surface-hover);
+    }
+
+    .theme-header:focus-visible {
+      outline: 3px solid rgba(242, 93, 90, 0.4);
+      outline-offset: -3px;
+    }
+
+    .theme-name {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .theme-icon {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--sso-blue-soft);
+      color: var(--sso-coral);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .theme.open .theme-icon {
+      background: rgba(242, 93, 90, 0.15);
+      color: var(--sso-coral);
+    }
+
+    .chevron {
+      color: var(--sso-coral);
+      font-size: 13px;
+      transition: transform 0.2s ease;
+    }
+
+    .theme.open .chevron {
+      transform: rotate(90deg);
+    }
+
+    .asset-list {
+      display: none;
+      margin: 0;
+      padding: 0 20px 18px 69px;
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .theme.open .asset-list {
+      display: block;
+    }
+
+    .asset-list li {
+      margin: 7px 0;
+    }
+
+    .asset-list a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .asset-list a::before {
+      content: "↗";
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: var(--sso-blue-soft);
+      color: var(--sso-coral);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .asset-list a:hover {
+      background: var(--sso-blue-soft);
+      color: var(--sso-coral-dark);
+    }
+
+    .asset-list a:hover::before {
+      background: rgba(242, 93, 90, 0.2);
+    }
+
+    .empty {
+      padding: 16px 0 4px;
+      color: var(--muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 28px 28px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .topbar-inner {
+        min-height: 70px;
+        padding: 14px 18px;
+      }
+
+      .brand svg {
+        max-width: 145px;
+        height: 30px;
+      }
+
+      .badge {
+        display: none;
+      }
+
+      .container {
+        padding: 30px 16px 45px;
+      }
+
+      .asset-list {
+        padding-left: 20px;
+      }
+
+      .theme-header {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        
+<svg width="200" height="35" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 200 37.04">
+  <defs>
+    <style>
+      .cls-1 { fill: #fff; }
+      .cls-one { fill: #f05e5a; }
+    </style>
+  </defs>
+  <path d="M5.1 34.12v-8.36H22a.8.8 0 0 0 .87-.92v-1.78c0-.56-.31-.82-.87-.82H10.81c-4.64 0-6.07-2-6.07-6.52v-4.54c0-4.64 2.29-7 6.93-7h19.27v8.32H14.22a.8.8 0 0 0-.87.92v1.79c0 .56.31.81.87.81h11.22c4.23 0 6.32 2.14 6.32 6.42v4.64c0 4.69-2.09 7-6.32 7ZM35.07 34.12v-8.36h16.87c.57 0 .87-.31.87-.92v-1.78c0-.56-.3-.82-.87-.82H40.78c-4.64 0-6.07-2-6.07-6.52v-4.54c0-4.64 2.3-7 6.94-7h19.27v8.32H44.2a.8.8 0 0 0-.87.92v1.79c0 .56.31.81.87.81h11.21c4.23 0 6.32 2.14 6.32 6.42v4.64c0 4.69-2.09 7-6.32 7ZM71.88 34.12c-4.74 0-7.14-2.24-7.14-6.78V11.23c0-4.69 2.34-7 7-7h13.14c4.64 0 6.93 2.35 6.93 7.09v15.81c0 4.64-2.29 7-6.83 7Zm11.21-19.53a1.35 1.35 0 0 0-1.53-1.53h-6.47a1.35 1.35 0 0 0-1.53 1.53v9.08c0 1.07.51 1.63 1.53 1.63h6.47a1.35 1.35 0 0 0 1.53-1.53Z" class="cls-1"/>
+  <path d="M133 19.48c0-.23 0-.46-.07-.68-.8-5.8-3.93-9.8-9.44-11.89a19 19 0 0 0-2.82-.65.49.49 0 0 0-.63.47.53.53 0 0 0 .51.6l.53.09a13 13 0 0 1 10.59 15.49 51 51 0 0 1-1.84 5.59c-.17.49-.14.8.21.92s.66-.11.81-.48.38-.91.56-1.37a19.4 19.4 0 0 0 1.62-7.2c-.03-.3-.03-.59-.03-.89M117.47 13a7.52 7.52 0 0 0-5.65 5 29.5 29.5 0 0 1-1.4 3.67 36 36 0 0 1-2.1 3.37c-.21.31-.35.59 0 .87s.64.15.88-.16l.43-.54a21 21 0 0 0 3.24-6.75 6.37 6.37 0 0 1 2.27-3.23 4.25 4.25 0 0 1 2.33-2.23" class="cls-one"/>
+  <path d="M122.85 15.35a6.4 6.4 0 0 1 1.73 2.23c.19.41.31.86.46 1.29s.38.52.68.37.27-.41.37-.64 0-.22-.07-.33a7.34 7.34 0 0 0-5.5-5.23 4.2 4.2 0 0 1 2.33 2.31" class="cls-one"/>
+  <path d="M126.18 25.76c-.11.35-.05.64.31.77a.5.5 0 0 0 .7-.36 17.1 17.1 0 0 0 1.36-6c0-.22 0-.64-.07-1a9.62 9.62 0 0 0-10.92-8.47 9.5 9.5 0 0 0-3.77 1.37c-.3.19-.46.44-.26.78s.51.36.84.15l.21-.13a8.3 8.3 0 0 1 5.74-1 8.6 8.6 0 0 1 6.84 10.78c-.27 1.03-.65 2.07-.98 3.11" class="cls-one"/>
+  <path d="M130.79 20.5a11.8 11.8 0 0 0-1-5 19 19 0 0 0-.93-1.73.5.5 0 0 0-.76-.17.5.5 0 0 0-.16.73c.07.13.15.26.23.39a10.87 10.87 0 0 1 1.2 8.35 29.6 29.6 0 0 1-5.85 11.59c-.5.6-.56.92-.24 1.17s.6.12 1.1-.5a29.4 29.4 0 0 0 4.9-8.43 17.6 17.6 0 0 0 1.51-6.4M126.32 11a12 12 0 0 0-7.62-2.62 11.83 11.83 0 0 0-8.63 3.93 11.6 11.6 0 0 0-2.55 4.44c-.12.37-.07.67.32.81s.61-.11.73-.46c.05-.14.09-.28.14-.42A10.84 10.84 0 0 1 122.24 10a11.7 11.7 0 0 1 3.5 1.88 1 1 0 0 0 .73.07c.12 0 .23-.36.21-.53a.9.9 0 0 0-.36-.42" class="cls-one"/>
+  <path d="m103.64 22.19.14-.19a18.3 18.3 0 0 0 2.64-5.53 12.72 12.72 0 0 1 7-8A25 25 0 0 1 117 7.38c.33-.1.58-.26.5-.6s-.29-.39-.44-.59l-.11.08h-.19a14 14 0 0 0-10.84 8.48c-.51 1.17-.8 2.44-1.33 3.6a35 35 0 0 1-1.79 3.16c-.19.31-.23.59.07.82a.55.55 0 0 0 .77-.14M113.94 18.75c-.24.72-.45 1.45-.71 2.16a16.06 16.06 0 0 1-5.43 7.74c-.5.37-1 .67-1.53 1.06a.75.75 0 0 0-.23.62c0 .16.27.29.43.45.24-.12.4-.19.55-.28a15.9 15.9 0 0 0 4.27-3.74 21.2 21.2 0 0 0 3.6-7.39 4.4 4.4 0 0 1 .23-.64 4.2 4.2 0 0 1-.38-1.53 5.4 5.4 0 0 0-.8 1.55" class="cls-one"/>
+  <path d="M109.33 8.3c.17 0 .33-.2.49-.32a14.94 14.94 0 0 1 11.88-2.7 30 30 0 0 1 3.87 1.25c.5.17.89 0 .9-.45s-.38-.54-.69-.67A16.25 16.25 0 0 0 109 7.21c-.11.08-.27.15-.29.26s-.14.51 0 .66a.8.8 0 0 0 .62.17M119.91 28.76l-.06.08c-.2.34-.25.67.14.89s.62 0 .81-.31.49-.85.73-1.29h-1.26ZM122.84 21.49a26 26 0 0 1-.86 2.9l.39 2a22 22 0 0 0 1-2.61c.33-1.09.57-2.22.83-3.23-.16-.75-.23-1.37-.41-2a5 5 0 0 0-.61-1.24 4.1 4.1 0 0 1-.45 1.53 4.6 4.6 0 0 1 .11 2.65" class="cls-one"/>
+  <path d="M126.09 22.2c-.12-.12-.28-.39-.45-.41s-.43.19-.63.32-.06.18-.08.28a26.53 26.53 0 0 1-7.88 13.09c-.29.27-.51.57-.19.92s.65.16.94-.11a27.53 27.53 0 0 0 8.2-13.64c0-.11 0-.22.09-.45M105.93 26a16.66 16.66 0 0 0 4.58-7.62 9.9 9.9 0 0 1 2.22-4 .52.52 0 0 0 0-.82.54.54 0 0 0-.83.08l-.27.29a10.1 10.1 0 0 0-2.07 3.76A16.17 16.17 0 0 1 105 25.3c-.32.29-.69.52-1 .83a.75.75 0 0 0-.16.6c0 .16.27.27.43.42.22-.12.39-.18.53-.28.4-.3.78-.59 1.13-.87M121.78 20.09a6 6 0 0 1-.55.42l.3 1.57c.12-.53.22-1 .29-1.3a5 5 0 0 0-.04-.69M115.93 19.9a28 28 0 0 1-1.85 4.88.55.55 0 1 0 1 .52c.06-.12.13-.23.18-.35.43-1.18.87-2.35 1.3-3.53l.17-.9a4.6 4.6 0 0 1-.8-.62M127.74 7.8l.26.2a15.05 15.05 0 0 1 5.68 8.29c.19.66.29 1.34.43 2 .07.32.28.53.58.46s.4-.3.54-.42c0-.22-.06-.3-.07-.38a16.2 16.2 0 0 0-3.49-8 15.5 15.5 0 0 0-3.26-3.05c-.3-.21-.59-.24-.82.07a.53.53 0 0 0 .15.83M118.57 29c.17-.28.33-.55.48-.84h-1.23a21.4 21.4 0 0 1-3.82 4.51c-.6.55-1.27 1-1.87 1.59a.88.88 0 0 0-.21.67c0 .15.27.26.46.42.26-.17.47-.28.66-.43a22.4 22.4 0 0 0 5.53-5.92M115.46 27.16c-.46.67-1 1.31-1.45 2-.22.29-.27.58 0 .83s.57.15.81-.11l.33-.38c.36-.43.69-.88 1-1.34h-.89ZM126.12 28.58c-.16-.15-.3-.36-.49-.43s-.53.11-.68.41a28 28 0 0 1-5 7c-.35.36-.39.71-.11.94s.63.1.9-.17a29.1 29.1 0 0 0 5.18-7.19 6 6 0 0 0 .2-.56M103.16 18.43c.45 0 .57-.27.64-.65a14.6 14.6 0 0 1 1.79-5c.49-.82 1.11-1.58 1.64-2.38a1.1 1.1 0 0 0 .13-.67c0-.14-.27-.24-.46-.4a4 4 0 0 0-.56.44 16.44 16.44 0 0 0-3.63 7.85c-.09.47.08.78.45.81M134.81 20.44c-.38 0-.54.18-.61.75-.09.77-.16 1.54-.32 2.29a15.1 15.1 0 0 1-1.77 4.62c-.28.47-.13.95.3.93a.94.94 0 0 0 .65-.41 16.5 16.5 0 0 0 2.24-7.36c.02-.54-.12-.79-.49-.82M113.72 27.44c.11-.16.28-.33.3-.5a.77.77 0 0 0-.19-.59c-.14-.1-.42-.05-.63 0s-.18.19-.25.29a14.5 14.5 0 0 1-3.31 3.42c-.6.43-1.25.78-1.85 1.22a.9.9 0 0 0-.3.63c0 .16.27.31.43.48a7 7 0 0 0 .68-.33 16.3 16.3 0 0 0 5.12-4.62" class="cls-one"/>
+  <path d="M119.15 31.78a4 4 0 0 0 .28-.53c-.14-.16-.27-.41-.41-.42a.87.87 0 0 0-.67.22 28 28 0 0 1-3.93 4c-.3.24-.43.52-.16.84s.57.24.86 0a27.5 27.5 0 0 0 4.03-4.11M107.44 20.09c.16-.35.22-.69-.19-.87s-.63.05-.81.4a15 15 0 0 1-1.12 2c-.61.83-1.34 1.57-2 2.37a.93.93 0 0 0-.19.64c0 .16.27.28.44.44a5 5 0 0 0 .54-.34 14.2 14.2 0 0 0 3.33-4.64M113.43 31.11c-.15-.18-.25-.41-.39-.44a1 1 0 0 0-.66.13c-.91.65-1.78 1.34-2.68 2-.3.23-.45.49-.22.83a.52.52 0 0 0 .81.1c.94-.69 1.86-1.4 2.78-2.11a2.2 2.2 0 0 0 .36-.51M129 31.28a.86.86 0 0 0-.65.25c-.36.48-.65 1-1 1.53a.53.53 0 0 0 .14.81.52.52 0 0 0 .79-.22l1-1.54a3 3 0 0 0 .15-.4c-.16-.14-.29-.41-.43-.43M107 27.75a.7.7 0 0 0-.11-.53.58.58 0 0 0-.51-.16 14 14 0 0 0-1.51 1.07c-.1.08-.1.38 0 .53s.27.24.33.29a3.5 3.5 0 0 0 1.8-1.2M120.52 13a4.1 4.1 0 0 0-1.57-.3 4.3 4.3 0 0 0-1.48.26 7.6 7.6 0 0 1 1.44-.14 7.2 7.2 0 0 1 1.61.18M122.71 28.13l-.34-1.74q-.39.88-.84 1.74Z" class="cls-one"/>
+
+  <path d="M156.26 34.12V14.59a1.35 1.35 0 0 0-1.53-1.53h-6.22a1.35 1.35 0 0 0-1.51 1.53v19.53h-8.81V11.23c0-4.69 2.34-7 7-7h12.9c4.64 0 6.93 2.35 6.93 7.09v22.8ZM175.33 34.12c-4.74 0-7.14-2.35-7.14-7V11.23q0-7 6.88-7h13.67c4.33 0 6.52 2.3 6.52 6.84v4.38c0 4.64-2.19 6.93-6.52 6.93h-10.15A3.3 3.3 0 0 1 177 22v2.24a1.35 1.35 0 0 0 1.53 1.53H194v8.36Zm11.16-20.7a.91.91 0 0 0-1-1H178a.92.92 0 0 0-1 1v2.09a.92.92 0 0 0 1 1h7.44a.91.91 0 0 0 1-1Z" class="cls-one"/>
+</svg>
+
+      </div>
+
+      <div class="badge">Theme Assets</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">SSO One</p>
+      <h1>Theme Assets</h1>
+      <p class="subtitle">
+        Browse themes and open their associated assets. Click a theme to expand
+        its asset collection.
+      </p>
+    </section>
+
+    <section id="themes" class="themes"></section>
+  </main>
+
+  <footer>
+    SSO One · Asset Browser
+  </footer>
+
+  <script>
+    const themes = [
+      {
+        name: "BRAC Bank PLC",
+        assets: [
+          { name: "Logo", url: "bbl/logo.svg" },
+          { name: "Theme CSS", url: "bbl/custom.css" },
+          { name: "Icons", url: "bbl/favicon.ico" }
+        ]
+      },
+      {
+        name: "Trust Bank PLC",
+        assets: [
+          { name: "Logo", url: "tbl/logo.svg" },
+          { name: "Theme CSS", url: "tbl/custom.css" },
+          { name: "Icons", url: "tbl/favicon.ico" }
+        ]
+      },
+      {
+        name: "Eastern Banl PLC",
+         assets: [
+          { name: "Logo", url: "ebl/logo.svg" },
+          { name: "Theme CSS", url: "ebl/custom.css" },
+          { name: "Icons", url: "ebl/favicon.ico" }
+        ]
+      }
+    ];
+
+    const themesContainer = document.getElementById("themes");
+
+    function renderThemes() {
+      themesContainer.innerHTML = "";
+
+      themes.forEach((theme, index) => {
+        const themeElement = document.createElement("section");
+        themeElement.className = "theme";
+
+        const header = document.createElement("button");
+        header.className = "theme-header";
+        header.type = "button";
+        header.setAttribute("aria-expanded", "false");
+        header.setAttribute("aria-controls", `theme-assets-${index}`);
+
+        const themeName = document.createElement("span");
+        themeName.className = "theme-name";
+
+        const icon = document.createElement("span");
+        icon.className = "theme-icon";
+        icon.textContent = "T";
+
+        const name = document.createElement("span");
+        name.textContent = theme.name;
+
+        const chevron = document.createElement("span");
+        chevron.className = "chevron";
+        chevron.textContent = "▶";
+
+        themeName.appendChild(icon);
+        themeName.appendChild(name);
+        header.appendChild(themeName);
+        header.appendChild(chevron);
+
+        const assetList = document.createElement("ul");
+        assetList.className = "asset-list";
+        assetList.id = `theme-assets-${index}`;
+
+        if (!theme.assets || theme.assets.length === 0) {
+          const li = document.createElement("li");
+          li.className = "empty";
+          li.textContent = "No assets available";
+          assetList.appendChild(li);
+        } else {
+          theme.assets.forEach(asset => {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+
+            link.href = asset.url;
+            link.textContent = asset.name;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            li.appendChild(link);
+            assetList.appendChild(li);
+          });
+        }
+
+        header.addEventListener("click", () => {
+          const isOpen = themeElement.classList.toggle("open");
+          header.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        themeElement.appendChild(header);
+        themeElement.appendChild(assetList);
+        themesContainer.appendChild(themeElement);
+      });
+    }
+
+    renderThemes();
+  </script>
+</body>
+</html>
