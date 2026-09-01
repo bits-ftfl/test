@@ -23,5 +23,9 @@ div.kc-logo-text {
 }
 
 div#kc-header-wrapper {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.login-pf body#keycloak-bg {
+    background-color: #e5e7eb !important;
 }
