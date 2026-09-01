@@ -1,0 +1,83 @@
+
+:root {
+    --custom--so-primary:  #03793e;
+    --custom--so-secondary: #D0D5DD;
+    --custom--so-danger: #F04438;
+    --custom--so-warning: #F79009;
+    --custom--so-success: #698b47;
+    --custom--so-fg: #36373A;
+    --custom--so-subTitle-color: #092c58;
+    --custom--so-card-top-color: #03793e;
+    --pf-v5-global--link--Color: #53d9f9;
+    --pf-v5-global--link--Color--hover: #177a97;
+    --pf-v5-global--primary-color--dark-100: var(--custom--so-primary);
+    --pf-v5-Color-100: var(--custom--so-primary);
+}
+
+:where(.pf-v5-theme-dark):root{
+    --custom--so-bg: #36373A;
+    --custom--so-fg: #FCFCFD;
+    --custom--so-secondary: #444548;
+    --custom--so-subTitle-color: #FCFCFD;
+}
+
+div.kc-logo-text {
+    background: url(logo.png) no-repeat center !important;
+    background-size: contain !important;
+    height: 65px !important;
+}
+
+div#kc-header-wrapper {
+    margin-bottom: 10px;
+}
+
+.login-pf .pf-v5-c-button {
+    --pf-v5-c-button--m-primary--BackgroundColor: #03793e;
+    --pf-v5-c-button--m-primary--hover--BackgroundColor: #137043;
+    --pf-v5-c-button--m-primary--active--BackgroundColor: #03793e;
+    --pf-v5-c-button--m-primary--focus--BackgroundColor: #03793e;
+}
+/* ---- text inputs: resting state ---- */
+.pf-v5-c-form-control,
+input.pf-v5-c-form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    border: 1px solid #2E7D46 !important;
+    border-bottom: 1px solid #2E7D46 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ---- hover / focus / active ---- */
+.pf-v5-c-form-control:hover,
+.pf-v5-c-form-control:focus,
+.pf-v5-c-form-control:focus-visible,
+.pf-v5-c-form-control:focus-within,
+.pf-v5-c-form-control:active,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #2E7D46 !important;
+    border-bottom: 1px solid #2E7D46 !important;
+    outline: none !important;      /* kills the blue ring */
+    box-shadow: none !important;
+}
+
+/* newer PF markup draws the border on a pseudo-element */
+.pf-v5-c-form-control::after,
+.pf-v5-c-form-control:focus-within::after {
+    border-color: #2E7D46 !important;
+    border-bottom-color: #2E7D46 !important;
+}
+
+/* ---- password field's eye toggle ---- */
+.pf-v5-c-button.pf-m-control,
+.pf-v5-c-input-group .pf-v5-c-button.pf-m-control {
+    border: 1px solid #2E7D46 !important;
+    outline: none !important;
+}
+.pf-v5-c-button.pf-m-control::after,
+.pf-v5-c-button.pf-m-control:hover::after,
+.pf-v5-c-button.pf-m-control:focus::after {
+    border-color: #2E7D46 !important;
+}

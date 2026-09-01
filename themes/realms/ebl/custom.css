@@ -1,0 +1,23 @@
+
+:root {
+    --custom--so-primary: #fdc909;
+    --custom--so-secondary: #D0D5DD;
+    --custom--so-danger: #F04438;
+    --custom--so-warning: #F79009;
+    --custom--so-success: #698b47;
+    --custom--so-fg: #36373A;
+    --custom--so-subTitle-color: #092c58;
+    --custom--so-card-top-color: #fdc909;
+}
+:where(.pf-v5-theme-dark):root{
+    --custom--so-bg: #36373A;
+    --custom--so-fg: #FCFCFD;
+    --custom--so-secondary: #444548;
+    --custom--so-subTitle-color: #FCFCFD;
+}
+
+div.kc-logo-text {
+    background: url(logo.png) no-repeat center !important;
+    background-size: contain !important;
+    height: 65px !important;
+}
